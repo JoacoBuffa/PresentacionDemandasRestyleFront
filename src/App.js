@@ -1,0 +1,67 @@
+// src/App.js
+
+import "./App.css";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Inicio } from "./components/Inicio";
+import { NavBar } from "./components/NavBar";
+import { Footer } from "./components/Footer";
+import { ModalDialog } from "./components/ModalDialog";
+
+import { Torneos } from "./components/torneos/Torneos";
+import { Temporadas } from "./components/Temporadas";
+
+import { Clubes } from "./components/clubes/Clubes";
+import { Ciudades } from "./components/clubes/Ciudades";
+
+import { Partes } from "./components/partes/Partes";
+// import { Posiciones } from "./components/Posiciones";
+
+import { Entrenadores } from "./components/entrenadores/Entrenadores";
+import { TiposEntrenadores } from "./components/TiposEntrenadores";
+
+// Importa createTheme y ThemeProvider
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+// Crear un tema con Segoe UI
+const theme = createTheme({
+  typography: {
+    fontFamily: "'Segoe UI', sans-serif", // Establecer Segoe UI como la fuente
+  },
+});
+
+function App() {
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        {" "}
+        {/* Envolver toda la aplicación con ThemeProvider */}
+        <BrowserRouter>
+          <ModalDialog />
+          <NavBar />
+          <div className="divBody">
+            <Routes>
+              <Route path="/inicio" element={<Inicio />} />
+
+              <Route path="/clubes" element={<Clubes />} />
+              <Route path="/ciudades" element={<Ciudades />} />
+              <Route path="/temporadas" element={<Temporadas />} />
+              <Route path="/torneos" element={<Torneos />} />
+              <Route path="/partes" element={<Partes />} />
+              {/* <Route path="/posiciones" element={<Posiciones />} /> */}
+              <Route
+                path="/tiposEntrenadores"
+                element={<TiposEntrenadores />}
+              />
+              <Route path="/entrenadores" element={<Entrenadores />} />
+
+              <Route path="*" element={<Navigate to="/inicio" replace />} />
+            </Routes>
+          </div>
+          <Footer />
+        </BrowserRouter>
+      </ThemeProvider>
+    </>
+  );
+}
+
+export default App;
