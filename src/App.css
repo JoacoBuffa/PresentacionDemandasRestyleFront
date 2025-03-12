@@ -106,11 +106,32 @@ input {
 }
 
 /* encabezados de tablas */
-thead {
-  /* bootstrap thead-light*/
-  color: #495057;
-  background-color: #aeb7d7; /* #e9ecef; */
-  border-color: #dee2e6;
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: center; /* Centra el texto */
+  vertical-align: middle; /* Asegura alineación vertical */
+  padding: 10px; /* Espaciado para mejor visualización */
+}
+
+th {
+  background-color: #008080; /* Color de encabezado */
+  color: white;
+}
+
+td {
+  border-bottom: 1px solid #ddd; /* Línea divisoria */
+}
+
+/* Para los botones de acciones */
+td .acciones {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espacio entre botones */
 }
 
 /* redes al pie de pagina */

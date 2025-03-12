@@ -5,6 +5,8 @@ import PartesListado from "./PartesListado";
 import PartesRegistro from "./PartesRegistro";
 import { parteService } from "../../services/parte.service";
 import { sexoService } from "../../services/sexo.service";
+import { tipodocumentoService } from "../../services/tipodocumento.service";
+import { tipodomicilioService } from "../../services/tipodomicilio.service";
 import modalDialogService from "../../services/modalDialog.service";
 import { Typography, Box } from "@mui/material";
 import BoxTitle from "../BoxTitle";
@@ -32,6 +34,10 @@ function Partes() {
   const [Pagina, setPagina] = useState(1);
   const [Paginas, setPaginas] = useState([]);
   const [Sexo, setSexo] = useState(null);
+  const [IdTipoDoc, setIdTipoDoc] = useState("");
+  const [TipoDoc, setTipoDoc] = useState(null);
+  const [IdTipoDomicilio, setIdTipoDomicilio] = useState("");
+  const [TipoDomicilio, setTipoDomicilio] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -41,6 +47,19 @@ function Partes() {
 
       const datas = await sexoService.Buscar(IdSexo, Descripcion);
       setSexo(datas);
+      setItems(data.Items);
+      setRegistrosTotal(data.RegistrosTotal);
+
+      const datat = await tipodocumentoService.Buscar(IdTipoDoc, Descripcion);
+      setTipoDoc(datat);
+      setItems(data.Items);
+      setRegistrosTotal(data.RegistrosTotal);
+
+      const datad = await tipodomicilioService.Buscar(
+        IdTipoDomicilio,
+        Descripcion
+      );
+      setTipoDomicilio(datad);
       setItems(data.Items);
       setRegistrosTotal(data.RegistrosTotal);
 

@@ -3,115 +3,120 @@ import { Grid, Box } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import moment from "moment";
 import ABMButton from "../ABMButton"; // Asegúrate de que este componente esté bien importado
 
 const PartesListado = ({ Items, Consultar, Modificar, Eliminar }) => {
   return (
-    <Grid
-      container
-      spacing={2}
-      sx={{
-        display: "flex",
-        justifyContent: "center", // Centra la tabla
-        alignItems: "center",
-        textAlign: "center",
-      }}
-    >
-      <Grid item xs={12} md={10} lg={8}>
-        {" "}
-        {/* Ajusta el ancho en distintas pantallas */}
+    <Grid container justifyContent="center">
+      <Grid item xs={15} md={15} lg={15}>
         <Box
           sx={{
-            display: "table",
+            display: "block",
             width: "100%",
             borderCollapse: "collapse",
-            margin: "0 auto",
-            boxShadow: 3, // Agrega una sombra para mejorar la estética
+            boxShadow: 3,
             borderRadius: 2,
-            overflow: "hidden", // Evita que los bordes se vean cortados
+            overflowX: "auto", // Permite desplazamiento horizontal si es necesario
           }}
         >
           {/* CABECERA */}
           <Box
             sx={{
-              display: "table-header-group",
-              bgcolor: "#009189",
+              display: "flex",
+              backgroundColor: "#009189",
               color: "white",
-              textAlign: "center",
               fontWeight: "bold",
               fontSize: "16px",
+              textAlign: "center",
+              padding: 1,
+              whiteSpace: "nowrap", // Evita que los textos se partan en varias líneas
             }}
           >
-            <Grid container spacing={2} sx={{ padding: 1 }}>
-              <Grid item xs={3}>
-                NOMBRE / RAZON SOCIAL
-              </Grid>
-              <Grid item xs={3}>
-                TIPO DOCUMENTO
-              </Grid>
-              <Grid item xs={2}>
-                N° DOCUMENTO
-              </Grid>
-              <Grid item xs={4}>
-                ACCIONES
-              </Grid>
-            </Grid>
+            <Box sx={{ flex: 1 }}>NOMBRE / RAZON SOCIAL</Box>
+            <Box sx={{ flex: 1 }}>SEXO</Box>
+            <Box sx={{ flex: 1 }}>TIPO DOCUMENTO</Box>
+            <Box sx={{ flex: 1 }}>N° DOCUMENTO</Box>
+            <Box sx={{ flex: 1 }}>TIPO DOMICILIO</Box>
+            <Box sx={{ flex: 1 }}>DOMICILIO</Box>
+            <Box sx={{ flex: 1 }}>LOCALIDAD</Box>
+            <Box sx={{ flex: 1 }}>MAIL CONTACTO</Box>
+            <Box sx={{ flex: 1 }}>TELEFONO</Box>
+            <Box sx={{ flex: 2 }}>ACCIONES</Box>
           </Box>
 
           {/* CUERPO DE LA TABLA */}
-          <Box sx={{ display: "table-row-group" }}>
+          <Box sx={{ display: "block" }}>
             {Items &&
-              Items.map((Item) => (
-                <Grid
-                  container
-                  spacing={1}
+              Items.map((Item, index) => (
+                <Box
                   key={Item.IdParte}
                   sx={{
+                    display: "flex",
                     padding: 1,
                     borderBottom: "1px solid #ddd",
-                    "&:nth-of-type(even)": { backgroundColor: "#black" }, // Alterna colores
+                    backgroundColor: index % 2 === 0 ? "#f9f9f9" : "#fff", // Alterna colores
+                    whiteSpace: "nowrap", // Mantiene los textos en una sola línea
                   }}
                 >
-                  <Grid item xs={3} textAlign="center">
+                  <Box sx={{ flex: 2, textAlign: "center" }}>
                     {Item.NombreApellido}
-                  </Grid>
-                  <Grid item xs={3} textAlign="center">
-                    {Item.FechaNacimiento}
-                  </Grid>
-                  <Grid item xs={2} textAlign="center">
-                    {Item.Dni}
-                  </Grid>
-                  <Grid item xs={4} textAlign="center">
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexWrap: "wrap", // Permite que los botones se acomoden en pantallas pequeñas
-                        justifyContent: "center",
-                        gap: 1, // Espacio entre botones
-                      }}
-                    >
-                      <ABMButton
-                        to="#"
-                        label="Ver"
-                        Icon={VisibilityIcon}
-                        onClick={() => Consultar(Item)}
-                      />
-                      <ABMButton
-                        to="#"
-                        label="Editar"
-                        Icon={EditIcon}
-                        onClick={() => Modificar(Item)}
-                      />
-                      <ABMButton
-                        to="#"
-                        label="Eliminar"
-                        Icon={DeleteForeverIcon}
-                        onClick={() => Eliminar(Item)}
-                      />
-                    </Box>
-                  </Grid>
-                </Grid>
+                  </Box>
+                  <Box sx={{ flex: 1, textAlign: "center" }}>
+                    {Item.sexo ? Item.sexo.Descripcion : "Sin Datos"}
+                  </Box>
+                  <Box sx={{ flex: 1, textAlign: "center" }}>
+                    {Item.tipodocumento
+                      ? Item.tipodocumento.Descripcion
+                      : "Sin Datos"}
+                  </Box>
+                  <Box sx={{ flex: 1, textAlign: "center" }}>
+                    {Item.NroDocumento}
+                  </Box>
+                  <Box sx={{ flex: 1, textAlign: "center" }}>
+                    {Item.tipodomicilio
+                      ? Item.tipodomicilio.Descripcion
+                      : "Sin Datos"}
+                  </Box>
+                  <Box sx={{ flex: 2, textAlign: "center" }}>
+                    {Item.Domicilio}
+                  </Box>
+                  <Box sx={{ flex: 1, textAlign: "center" }}>
+                    {Item.Localidad}
+                  </Box>
+                  <Box sx={{ flex: 2, textAlign: "center" }}>
+                    {Item.MailContacto}
+                  </Box>
+                  <Box sx={{ flex: 1, textAlign: "center" }}>
+                    {Item.Telefono}
+                  </Box>
+                  <Box
+                    sx={{
+                      flex: 2,
+                      display: "flex",
+                      justifyContent: "center",
+                      gap: 1,
+                    }}
+                  >
+                    <ABMButton
+                      to="#"
+                      label="Ver"
+                      Icon={VisibilityIcon}
+                      onClick={() => Consultar(Item)}
+                    />
+                    <ABMButton
+                      to="#"
+                      label="Editar"
+                      Icon={EditIcon}
+                      onClick={() => Modificar(Item)}
+                    />
+                    <ABMButton
+                      to="#"
+                      label="Eliminar"
+                      Icon={DeleteForeverIcon}
+                      onClick={() => Eliminar(Item)}
+                    />
+                  </Box>
+                </Box>
               ))}
           </Box>
         </Box>

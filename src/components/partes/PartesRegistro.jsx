@@ -9,6 +9,7 @@ import SelectForm from "../SelectForm";
 export default function PartesRegistro({
   AccionABMC,
   Sexo,
+  tipodocumento,
   Item,
   Grabar,
   Volver,
@@ -34,13 +35,23 @@ export default function PartesRegistro({
         <fieldset disabled={AccionABMC === "C"}>
           {/* campo nombre */}
           <div className="row">
-            <TextFieldTypeText label="Nombres" name="Nombres" flag={true} />
+            <TextFieldTypeText
+              label="Nombre y Apellido"
+              name="Nombre y Apellido"
+              flag={true}
+            />
           </div>
-
           <div className="row">
-            <TextFieldTypeText label="Apellidos" name="Apellido" flag={false} />
+            <SelectForm
+              label="Tipo Documento"
+              name="Tipo Documento"
+              value={watch("Tipo Documento")} // Obtiene el valor actual del formulario
+              onChange={(e) => setValue("Tipo Documento", e.target.value)} // Actualiza el estado en react-hook-form
+              {...(Sexo &&
+                Sexo.map((s) => ({ value: s.IdSexo, label: s.Descripcion })))}
+              error={errors?.Sexo?.message} // Muestra el mensaje de error si existe
+            />
           </div>
-
           {/* campo Dni */}
           <div className="row">
             <TextFieldTypeText
@@ -132,24 +143,17 @@ export default function PartesRegistro({
 
           {/* campo IdPosicion */}
           <div className="row">
-            <div className="col-sm-4 col-md-3 offset-md-1">
-              <label className="col-form-label" htmlFor="IdPosicion">
-                Posición<span className="text-danger">*</span>:
-              </label>
-            </div>
-            <div className="col-sm-8 col-md-6">
-              <SelectForm
-                label="Posición"
-                name="IdPosicion"
-                value={watch("IdPosicion")} // Obtiene el valor actual del formulario
-                onChange={(e) => setValue("IdPosicion", e.target.value)} // Actualiza el estado en react-hook-form
-                options={Sexo?.map((x) => ({
-                  value: x.IdSexo,
-                  label: x.Descripcion,
-                }))}
-                error={errors?.IdPosicion?.message} // Muestra el mensaje de error si existe
-              />
-            </div>
+            <SelectForm
+              label="Sexo"
+              name="Sexo"
+              value={watch("Sexo")} // Obtiene el valor actual del formulario
+              onChange={(e) => setValue("Sexo", e.target.value)} // Actualiza el estado en react-hook-form
+              options={Sexo?.map((x) => ({
+                value: x.IdSexo,
+                label: x.Descripcion,
+              }))}
+              error={errors?.Sexo?.message} // Muestra el mensaje de error si existe
+            />
           </div>
 
           {/* campo Activo */}
