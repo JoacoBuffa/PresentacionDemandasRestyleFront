@@ -3,7 +3,7 @@ import { TextField, Button, Grid, Box } from "@mui/material";
 import { Add } from "@mui/icons-material";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
-import ABMButton from "../ABMButton";
+import ABMButton from "../Buttons/ABMButton";
 
 export default function PartesBuscar({
   NombreApellido,

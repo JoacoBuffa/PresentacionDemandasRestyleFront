@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button, Box, Container, Icon } from "@mui/material";
 import BoxTitle from "../components/BoxTitle"; // Importa el componente
-import NavButton from "../components/NavButton";
+import NavButton from "../components/Buttons/NavButton";
 import PostAddIcon from "@mui/icons-material/PostAdd"; // Importa el componente
 import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import FactCheckIcon from "@mui/icons-material/FactCheck";

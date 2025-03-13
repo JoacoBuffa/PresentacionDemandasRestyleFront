@@ -2,14 +2,15 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import SaveIcon from "@mui/icons-material/Save";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ABMButton from "../ABMButton";
+import ABMButton from "../Buttons/ABMButton";
 import TextFieldTypeText from "../TextFieldTypeText";
 import SelectForm from "../SelectForm";
 
 export default function PartesRegistro({
   AccionABMC,
   Sexo,
-  tipodocumento,
+  TipoDoc,
+  TipoDomicilio,
   Item,
   Grabar,
   Volver,
@@ -43,15 +44,28 @@ export default function PartesRegistro({
           </div>
           <div className="row">
             <SelectForm
-              label="Tipo Documento"
+              label=""
+              name="Tipo Domicilio"
+              value={watch("TipoDomicilio")} // Obtiene el valor actual del formulario
+              onChange={(e) => setValue("TipoDomicilio", e.target.value)} // Actualiza el estado en react-hook-form
+              options={TipoDomicilio?.map((x) => ({
+                value: x.IdTipoDomicilio,
+                label: x.Descripcion,
+              }))}
+              error={errors?.TipoDoc?.message} // Muestra el mensaje de error si existe
+            />
+          </div>
+          <div className="row">
+            <SelectForm
+              label=""
               name="Tipo Documento"
-              value={watch("tipodocumento")} // Obtiene el valor actual del formulario
-              onChange={(e) => setValue("tipodocumento", e.target.value)} // Actualiza el estado en react-hook-form
-              options={tipodocumento?.map((x) => ({
+              value={watch("TipoDoc")} // Obtiene el valor actual del formulario
+              onChange={(e) => setValue("TipoDoc", e.target.value)} // Actualiza el estado en react-hook-form
+              options={TipoDoc?.map((x) => ({
                 value: x.IdTipoDocumento,
                 label: x.Descripcion,
               }))}
-              error={errors?.TipoDocumento?.message} // Muestra el mensaje de error si existe
+              error={errors?.TipoDoc?.message} // Muestra el mensaje de error si existe
             />
           </div>
           {/* campo Dni */}
@@ -63,90 +77,10 @@ export default function PartesRegistro({
               type="number"
             />
           </div>
-
-          {/* campo FechaNacimiento */}
-          <div className="row">
-            <div className="col-sm-4 col-md-3 offset-md-1">
-              <label className="col-form-label" htmlFor="FechaNacimiento">
-                Fecha Nacimiento:
-              </label>
-            </div>
-            <div className="col-sm-8 col-md-6">
-              <input
-                type="date"
-                {...register("FechaNacimiento")}
-                className={
-                  "form-control " +
-                  (errors?.FechaNacimiento ? "is-invalid" : "")
-                }
-              />
-            </div>
-          </div>
-
-          {/* campo Peso */}
-          <div className="row">
-            <div className="col-sm-4 col-md-3 offset-md-1">
-              <label className="col-form-label" htmlFor="Peso">
-                Peso:
-              </label>
-            </div>
-            <div className="col-sm-8 col-md-6">
-              <input
-                type="float"
-                {...register("Peso", {
-                  min: {
-                    value: 1,
-                    message: "Peso debe ser mayor a 1",
-                  },
-                  max: {
-                    value: 200,
-                    message: "Peso debe ser menor a 200",
-                  },
-                })}
-                className={"form-control " + (errors?.Peso ? "is-invalid" : "")}
-              />
-              {errors?.Peso && touchedFields.Peso && (
-                <div className="invalid-feedback">{errors?.Peso?.message}</div>
-              )}
-            </div>
-          </div>
-
-          {/* campo Altura */}
-          <div className="row">
-            <div className="col-sm-4 col-md-3 offset-md-1">
-              <label className="col-form-label" htmlFor="Altura">
-                Altura:
-              </label>
-            </div>
-            <div className="col-sm-8 col-md-6">
-              <input
-                type="float"
-                {...register("Altura", {
-                  min: {
-                    value: 1,
-                    message: "Altura debe ser mayor a 1",
-                  },
-                  max: {
-                    value: 220,
-                    message: "Altura debe ser menor a 220",
-                  },
-                })}
-                className={
-                  "form-control " + (errors?.Altura ? "is-invalid" : "")
-                }
-              />
-              {errors?.Altura && touchedFields.Altura && (
-                <div className="invalid-feedback">
-                  {errors?.Altura?.message}
-                </div>
-              )}
-            </div>
-          </div>
-
           {/* campo IdPosicion */}
           <div className="row">
             <SelectForm
-              label="Sexo"
+              label=""
               name="Sexo"
               value={watch("Sexo")} // Obtiene el valor actual del formulario
               onChange={(e) => setValue("Sexo", e.target.value)} // Actualiza el estado en react-hook-form
@@ -156,32 +90,6 @@ export default function PartesRegistro({
               }))}
               error={errors?.Sexo?.message} // Muestra el mensaje de error si existe
             />
-          </div>
-
-          {/* campo Activo */}
-          <div className="row">
-            <div className="col-sm-4 col-md-3 offset-md-1">
-              <label className="col-form-label" htmlFor="Activo">
-                Activo<span className="text-danger">*</span>:
-              </label>
-            </div>
-            <div className="col-sm-8 col-md-6">
-              <select
-                name="Activo"
-                {...register("Activo", {
-                  required: { value: true, message: "Activo es requerido" },
-                })}
-                className={
-                  "form-control" + (errors?.Activo ? " is-invalid" : "")
-                }
-                enabled
-              >
-                <option value={null}></option>
-                <option value={false}>NO</option>
-                <option value={true}>SI</option>
-              </select>
-              <div className="invalid-feedback">{errors?.Activo?.message}</div>
-            </div>
           </div>
         </fieldset>
 

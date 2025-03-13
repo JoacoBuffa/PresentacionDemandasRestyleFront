@@ -3,7 +3,7 @@ import { Grid, Box } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import ABMButton from "../ABMButton"; // Asegúrate de que este componente esté bien importado
+import ABMButton from "../Buttons/ABMButton"; // Asegúrate de que este componente esté bien importado
 
 const PartesListado = ({ Items, Consultar, Modificar, Eliminar }) => {
   return (

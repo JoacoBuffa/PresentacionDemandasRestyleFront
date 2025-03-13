@@ -10,9 +10,9 @@ import { tipodomicilioService } from "../../services/tipodomicilio.service";
 import modalDialogService from "../../services/modalDialog.service";
 import { Typography, Box } from "@mui/material";
 import BoxTitle from "../BoxTitle";
-import NavButtonSec from "../NavButtonSec";
+import NavButtonSec from "../Buttons/NavButtonSec";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ABMButton from "../ABMButton";
+import ABMButton from "../Buttons/ABMButton";
 
 function Partes() {
   const TituloAccionABMC = {
@@ -51,17 +51,15 @@ function Partes() {
       setRegistrosTotal(data.RegistrosTotal);
 
       const datat = await tipodocumentoService.Buscar(IdTipoDoc, Descripcion);
+      console.log(datat);
       setTipoDoc(datat);
-      setItems(data.Items);
-      setRegistrosTotal(data.RegistrosTotal);
 
       const datad = await tipodomicilioService.Buscar(
         IdTipoDomicilio,
         Descripcion
       );
+      console.log("AAAAAAAA", datad);
       setTipoDomicilio(datad);
-      setItems(data.Items);
-      setRegistrosTotal(data.RegistrosTotal);
 
       // generar array de las páginas para mostrar en select del paginador
       const arrPaginas = [];
@@ -72,7 +70,7 @@ function Partes() {
     }
 
     fetchData();
-  }, [NombreApellido, Pagina]);
+  }, [Pagina]);
 
   async function Buscar(_pagina) {
     if (_pagina && _pagina !== Pagina) {

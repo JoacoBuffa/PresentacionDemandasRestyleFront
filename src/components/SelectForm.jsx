@@ -16,14 +16,21 @@ const SelectForm = ({
   error,
 }) => {
   return (
-    <FormControl fullWidth error={!!error}>
-      <InputLabel shrink={!!value}>{label}</InputLabel> {/* Ajustamos shrink */}
+    <FormControl
+      sx={{
+        width: "50%", // Ajuste para que coincida con los TextField
+        margin: "0 auto",
+        mb: 2,
+      }}
+      error={!!error}
+    >
+      <InputLabel shrink={!!value}>{label}</InputLabel>
       <Select
         name={name}
         value={value}
         onChange={onChange}
-        onBlur={onBlur} // Agregamos manejo de blur
-        displayEmpty // Permite mostrar el label correctamente
+        onBlur={onBlur}
+        displayEmpty
       >
         <MenuItem value="">
           <em>Seleccione una opción</em>
