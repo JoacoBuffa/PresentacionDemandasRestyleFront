@@ -45,11 +45,13 @@ export default function PartesRegistro({
             <SelectForm
               label="Tipo Documento"
               name="Tipo Documento"
-              value={watch("Tipo Documento")} // Obtiene el valor actual del formulario
-              onChange={(e) => setValue("Tipo Documento", e.target.value)} // Actualiza el estado en react-hook-form
-              {...(Sexo &&
-                Sexo.map((s) => ({ value: s.IdSexo, label: s.Descripcion })))}
-              error={errors?.Sexo?.message} // Muestra el mensaje de error si existe
+              value={watch("tipodocumento")} // Obtiene el valor actual del formulario
+              onChange={(e) => setValue("tipodocumento", e.target.value)} // Actualiza el estado en react-hook-form
+              options={tipodocumento?.map((x) => ({
+                value: x.IdTipoDocumento,
+                label: x.Descripcion,
+              }))}
+              error={errors?.TipoDocumento?.message} // Muestra el mensaje de error si existe
             />
           </div>
           {/* campo Dni */}

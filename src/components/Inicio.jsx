@@ -10,23 +10,6 @@ import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import HelpIcon from "@mui/icons-material/Help";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
-const botones = [
-  { to: "/clubes", label: "Nueva Presentación", Icon: PostAddIcon }, // Aquí se pasa el icono
-  {
-    to: "/ciudades",
-    label: "Presentaciones Pendientes",
-    Icon: PendingActionsIcon,
-  },
-  { to: "/torneos", label: "Presentaciones Concluidas", Icon: FactCheckIcon },
-  { to: "/partes", label: "Agenda de Partes", Icon: ContactsIcon },
-  {
-    to: "/entrenadores",
-    label: "Gestión de poderes",
-    Icon: WorkspacePremiumIcon,
-  },
-  { to: "/temporadas", label: "Rutas de Aprendizaje", Icon: HelpIcon },
-];
-
 export function Inicio() {
   return (
     <Container maxWidth="lg" sx={{ mt: 4 }}>
@@ -51,14 +34,11 @@ export function Inicio() {
             margin: 0,
           }}
         >
-          {botones.map((boton) => (
-            <NavButton
-              key={boton.to}
-              to={boton.to}
-              label={boton.label}
-              Icon={boton.Icon} // Asegúrate de pasar el icono aquí
-            />
-          ))}
+          <NavButton
+            to="/partes"
+            label="Agenda de Partes"
+            Icon={ContactsIcon}
+          />
         </Box>
       </Box>
     </Container>

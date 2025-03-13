@@ -170,7 +170,7 @@ function Partes() {
       <Box sx={{ justifyContent: "center" }}>
         <NavButtonSec
           label="Volver al inicio "
-          to="/home"
+          to="/Inicio"
           Icon={ArrowBackIcon}
         />
         <BoxTitle title="Agenda de Partes" />
@@ -195,6 +195,8 @@ function Partes() {
             Pagina,
             RegistrosTotal,
             Sexo,
+            TipoDoc,
+            TipoDomicilio,
             Paginas,
             Buscar,
           }}
@@ -210,7 +212,17 @@ function Partes() {
 
       {/* Formulario de alta/modificacion/consulta */}
       {AccionABMC !== "L" && (
-        <PartesRegistro {...{ AccionABMC, Sexo, Item, Grabar, Volver }} />
+        <PartesRegistro
+          {...{
+            AccionABMC,
+            Sexo,
+            TipoDoc,
+            TipoDomicilio,
+            Item,
+            Grabar,
+            Volver,
+          }}
+        />
       )}
     </div>
   );

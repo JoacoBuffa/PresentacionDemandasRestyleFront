@@ -21,13 +21,13 @@ import AccountMenu from "./AccountMenu"; // Importa el componente AccountMenu
 
 const links = [
   { to: "/inicio", label: "Inicio" },
-  { to: "/clubes", label: "Clubes" },
-  { to: "/ciudades", label: "Ciudades" },
-  { to: "/entrenadores", label: "Entrenadores" },
-  { to: "/tiposEntrenadores", label: "Tipos Entrenadores" },
-  { to: "/jugadores", label: "Jugadores" },
-  { to: "/torneos", label: "Torneos" },
-  { to: "/temporadas", label: "Temporadas" },
+  { to: "/#", label: "Clubes" },
+  { to: "/#", label: "Ciudades" },
+  { to: "/#", label: "Entrenadores" },
+  { to: "/#", label: "Tipos Entrenadores" },
+  { to: "/parte", label: "parte" },
+  { to: "/#", label: "Torneos" },
+  { to: "/#", label: "Temporadas" },
 ];
 
 export function NavBar() {

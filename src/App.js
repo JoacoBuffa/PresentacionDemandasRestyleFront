@@ -7,17 +7,8 @@ import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
 import { ModalDialog } from "./components/ModalDialog";
 
-import { Torneos } from "./components/torneos/Torneos";
-import { Temporadas } from "./components/Temporadas";
-
-import { Clubes } from "./components/clubes/Clubes";
-import { Ciudades } from "./components/clubes/Ciudades";
-
 import { Partes } from "./components/partes/Partes";
 // import { Posiciones } from "./components/Posiciones";
-
-import { Entrenadores } from "./components/entrenadores/Entrenadores";
-import { TiposEntrenadores } from "./components/TiposEntrenadores";
 
 // Importa createTheme y ThemeProvider
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -40,21 +31,8 @@ function App() {
           <NavBar />
           <div className="divBody">
             <Routes>
-              <Route path="/inicio" element={<Inicio />} />
-
-              <Route path="/clubes" element={<Clubes />} />
-              <Route path="/ciudades" element={<Ciudades />} />
-              <Route path="/temporadas" element={<Temporadas />} />
-              <Route path="/torneos" element={<Torneos />} />
               <Route path="/partes" element={<Partes />} />
-              {/* <Route path="/posiciones" element={<Posiciones />} /> */}
-              <Route
-                path="/tiposEntrenadores"
-                element={<TiposEntrenadores />}
-              />
-              <Route path="/entrenadores" element={<Entrenadores />} />
-
-              <Route path="*" element={<Navigate to="/inicio" replace />} />
+              <Route path="/inicio" element={<Inicio />} />
             </Routes>
           </div>
           <Footer />
