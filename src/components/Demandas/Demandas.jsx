@@ -155,14 +155,13 @@ function Demandas() {
 
   return (
     <div>
-      <Box sx={{ justifyContent: "center" }}>
+      {/* <Box sx={{ justifyContent: "center" }}>
         <NavButtonSec
           label="Volver al inicio "
           to="/Inicio"
           Icon={ArrowBackIcon}
         />
-        <BoxTitle title="" />
-      </Box>
+      </Box> */}
       <div>
         <StepperDemandas></StepperDemandas>
       </div>
