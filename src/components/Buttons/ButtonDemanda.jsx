@@ -1,28 +1,34 @@
 import { Button, Box, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ABMButton = ({ label, Icon, onClick }) => {
+const ButtonDemanda = ({
+  border,
+  onClick,
+  label,
+  disabled,
+  bgColor,
+  fontColor,
+}) => {
   return (
     <Button
-      component={Link}
       variant="contained"
-      size="medium"
+      onClick={onClick}
+      disabled={disabled}
       sx={{
         boxShadow: 0,
         borderRadius: 3,
         padding: "10px 20px",
         fontWeight: "bold",
         margin: "10px",
-        backgroundColor: "#009189",
+        backgroundColor: bgColor || "#009189",
         fontSize: "0.8rem",
-        flexGrow: 1,
+        color: fontColor || "white",
+        border: border || "none",
       }}
-      startIcon={Icon ? <Icon /> : null} // Si hay un icono, se muestra al inicio
-      onClick={onClick} // Agregamos el onClick aquí
     >
       {label}
     </Button>
   );
 };
 
-export default ABMButton;
+export default ButtonDemanda;

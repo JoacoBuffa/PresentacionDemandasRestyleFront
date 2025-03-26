@@ -12,7 +12,7 @@ const NavButton = ({ to, label, Icon }) => {
         boxShadow: 0,
         borderRadius: 3,
         padding: "40px 40px",
-        fontWeight: "a",
+        fontWeight: "bold",
         margin: "10px",
         backgroundColor: "#009189",
         fontSize: 22,

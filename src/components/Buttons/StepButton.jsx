@@ -17,7 +17,6 @@ const ABMButton = ({ label, Icon, onClick }) => {
         fontSize: "0.8rem",
         flexGrow: 1,
       }}
-      startIcon={Icon ? <Icon /> : null} // Si hay un icono, se muestra al inicio
       onClick={onClick} // Agregamos el onClick aquí
     >
       {label}

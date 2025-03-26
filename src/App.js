@@ -6,6 +6,7 @@ import { Inicio } from "./components/Inicio";
 import { NavBar } from "./components/NavBar";
 import { Footer } from "./components/Footer";
 import { ModalDialog } from "./components/ModalDialog";
+import { Demandas } from "./components/Demandas/Demandas";
 
 import { Partes } from "./components/partes/Partes";
 // import { Posiciones } from "./components/Posiciones";
@@ -33,6 +34,7 @@ function App() {
             <Routes>
               <Route path="/partes" element={<Partes />} />
               <Route path="/inicio" element={<Inicio />} />
+              <Route path="/demandas" element={<Demandas />} />
             </Routes>
           </div>
           <Footer />

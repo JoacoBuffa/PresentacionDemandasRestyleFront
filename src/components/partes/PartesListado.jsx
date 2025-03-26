@@ -33,14 +33,10 @@ const PartesListado = ({ Items, Consultar, Modificar, Eliminar }) => {
             }}
           >
             <Box sx={{ flex: 1 }}>NOMBRE / RAZON SOCIAL</Box>
-            <Box sx={{ flex: 1 }}>SEXO</Box>
             <Box sx={{ flex: 1 }}>TIPO DOCUMENTO</Box>
             <Box sx={{ flex: 1 }}>N° DOCUMENTO</Box>
-            <Box sx={{ flex: 1 }}>TIPO DOMICILIO</Box>
-            <Box sx={{ flex: 1 }}>DOMICILIO</Box>
             <Box sx={{ flex: 1 }}>LOCALIDAD</Box>
             <Box sx={{ flex: 1 }}>MAIL CONTACTO</Box>
-            <Box sx={{ flex: 1 }}>TELEFONO</Box>
             <Box sx={{ flex: 2 }}>ACCIONES</Box>
           </Box>
 
@@ -62,23 +58,12 @@ const PartesListado = ({ Items, Consultar, Modificar, Eliminar }) => {
                     {Item.NombreApellido}
                   </Box>
                   <Box sx={{ flex: 1, textAlign: "center" }}>
-                    {Item.sexo ? Item.sexo.Descripcion : "Sin Datos"}
-                  </Box>
-                  <Box sx={{ flex: 1, textAlign: "center" }}>
                     {Item.tipodocumento
                       ? Item.tipodocumento.Descripcion
                       : "Sin Datos"}
                   </Box>
                   <Box sx={{ flex: 1, textAlign: "center" }}>
                     {Item.NroDocumento}
-                  </Box>
-                  <Box sx={{ flex: 1, textAlign: "center" }}>
-                    {Item.tipodomicilio
-                      ? Item.tipodomicilio.Descripcion
-                      : "Sin Datos"}
-                  </Box>
-                  <Box sx={{ flex: 2, textAlign: "center" }}>
-                    {Item.Domicilio}
                   </Box>
                   <Box sx={{ flex: 1, textAlign: "center" }}>
                     {Item.Localidad}

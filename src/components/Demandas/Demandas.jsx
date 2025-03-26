@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import PartesBuscar from "./PartesBuscar";
-import PartesListado from "./PartesListado";
-import PartesRegistro from "./PartesRegistro";
 import { parteService } from "../../services/parte.service";
 import { sexoService } from "../../services/sexo.service";
 import { tipodocumentoService } from "../../services/tipodocumento.service";
 import { tipodomicilioService } from "../../services/tipodomicilio.service";
 import modalDialogService from "../../services/modalDialog.service";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Stepper } from "@mui/material";
 import BoxTitle from "../BoxTitle";
 import NavButtonSec from "../Buttons/NavButtonSec";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ABMButton from "../Buttons/ABMButton";
+import StepperDemandas from "../StepperDemandas";
 
-function Partes() {
+function Demandas() {
   const [AccionABMC, setAccionABMC] = useState("L");
   const [NombreApellido, setNombreApellido] = useState("");
   const [Activo, setActivo] = useState("");
@@ -163,58 +161,14 @@ function Partes() {
           to="/Inicio"
           Icon={ArrowBackIcon}
         />
-        <BoxTitle title="Agenda de Partes" />
+        <BoxTitle title="" />
       </Box>
-
-      {AccionABMC === "L" && (
-        <PartesBuscar
-          NombreApellido={NombreApellido}
-          setNombreApellido={setNombreApellido}
-          Buscar={Buscar}
-          Agregar={Agregar}
-        />
-      )}
+      <div>
+        <StepperDemandas></StepperDemandas>
+      </div>
 
       {/* Tabla de resutados de busqueda y Paginador */}
-      {AccionABMC === "L" && Items?.length > 0 && (
-        <PartesListado
-          {...{
-            Items,
-            Consultar,
-            Eliminar,
-            Pagina,
-            RegistrosTotal,
-            Sexo,
-            TipoDoc,
-            TipoDomicilio,
-            Paginas,
-            Buscar,
-          }}
-        />
-      )}
-
-      {AccionABMC === "L" && Items?.length === 0 && (
-        <div className="alert alert-info mensajesAlert">
-          <i className="fa fa-exclamation-sign"></i>
-          No se encontraron registros...
-        </div>
-      )}
-
-      {/* Formulario de alta/modificacion/consulta */}
-      {AccionABMC !== "L" && (
-        <PartesRegistro
-          {...{
-            AccionABMC,
-            Sexo,
-            TipoDoc,
-            TipoDomicilio,
-            Item,
-            Grabar,
-            Volver,
-          }}
-        />
-      )}
     </div>
   );
 }
-export { Partes };
+export { Demandas };

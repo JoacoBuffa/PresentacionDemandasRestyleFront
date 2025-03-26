@@ -5,6 +5,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ABMButton from "../Buttons/ABMButton";
 import TextFieldTypeText from "../TextFieldTypeText";
 import SelectForm from "../SelectForm";
+import ComboBoxAutocomplete from "../ComboBox";
 
 export default function PartesRegistro({
   AccionABMC,
@@ -56,16 +57,15 @@ export default function PartesRegistro({
             />
           </div>
           <div className="row">
-            <SelectForm
-              label=""
-              name="Tipo Documento"
-              value={watch("TipoDoc")} // Obtiene el valor actual del formulario
-              onChange={(e) => setValue("TipoDoc", e.target.value)} // Actualiza el estado en react-hook-form
-              options={TipoDoc?.map((x) => ({
-                value: x.IdTipoDocumento,
+            <ComboBoxAutocomplete
+              label="Tipo Documento"
+              name="TipoDoc"
+              value={watch("TipoDoc")}
+              onChange={(e) => setValue("TipoDoc", e.target.value)}
+              fetchOptions={TipoDoc?.map((x) => ({
+                value: x.IdTipoDoc,
                 label: x.Descripcion,
               }))}
-              error={errors?.TipoDoc?.message} // Muestra el mensaje de error si existe
             />
           </div>
           {/* campo Dni */}

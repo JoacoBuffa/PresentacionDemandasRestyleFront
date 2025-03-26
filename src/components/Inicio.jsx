@@ -39,6 +39,7 @@ export function Inicio() {
             label="Agenda de Partes"
             Icon={ContactsIcon}
           />
+          <NavButton to="/demandas" label="Nueva Demanda" Icon={PostAddIcon} />
         </Box>
       </Box>
     </Container>
